@@ -9,7 +9,7 @@
 			"url": "https://opensource.org/licenses/MIT"
 		}
 	},
-	"host": "https://food-apis.herokuapp.com",
+	"host": "food-apis.herokuapp.com",
 	"basePath": "/",
 	"tags": [
 		{
@@ -17,7 +17,7 @@
 			"description": "API for orders in the system"
 		}
 	],
-	"schemes": ["http"],
+	"schemes": ["https"],
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 
