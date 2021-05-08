@@ -9,7 +9,7 @@
 			"url": "https://opensource.org/licenses/MIT"
 		}
 	},
-	"host": "https://food-apis.herokuapp.com/",
+	"host": "https://food-apis.herokuapp.com",
 	"basePath": "/",
 	"tags": [
 		{
