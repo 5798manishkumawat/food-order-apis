@@ -1,0 +1,187 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Food Orders",
+		"description": "My Orders Project APIs",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"host": "localhost:5000",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "Orders",
+			"description": "API for orders in the system"
+		}
+	],
+	"schemes": ["http"],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+
+	"paths": {
+		"/orders": {
+			"get": {
+				"tags": ["Orders"],
+				"summary": "Get all orders in system",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				}
+			}
+		},
+		"/new/order": {
+			"post": {
+				"tags": ["Orders"],
+				"summary": "Create a order in system",
+				"parameters": [
+					{
+						"name": "Order",
+						"in": "body",
+						"required": true,
+						"description": "Order we want to create",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "Order is created",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				}
+			}
+		},
+		"/order/{orderId}": {
+			"parameters": [
+				{
+					"name": "orderId",
+					"in": "path",
+					"required": true,
+					"description": "ID of order that we want to find",
+					"type": "string"
+				}
+			],
+			"get": {
+				"tags": ["Orders"],
+				"summary": "Get order with id equl to orderId in system",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				}
+			}
+		},
+		"/update/{orderId}": {
+			"parameters": [
+				{
+					"name": "orderId",
+					"in": "path",
+					"required": true,
+					"description": "ID of Order we want to update",
+					"type": "string"
+				}
+			],
+			"put": {
+				"tags": ["Orders"],
+				"summary": "Update order of a Restaurant with orderId and restaurantId in system",
+				"parameters": [
+					{
+						"name": "Order",
+						"in": "body",
+						"required": true,
+						"description": "Order with new values",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				],
+				"produces": ["application/json"],
+				"responses": {
+					"201": {
+						"description": "Order is Updated",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				}
+			}
+		},
+		"/remove/{orderId}": {
+			"parameters": [
+				{
+					"name": "orderId",
+					"in": "path",
+					"required": true,
+					"description": "ID of order that we want to delete",
+					"type": "string"
+				}
+			],
+			"delete": {
+				"tags": ["Orders"],
+				"summary": "Delete order with id equl to orderId in system",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				}
+			}
+		},
+		"/orders/{restaurantId}": {
+			"parameters": [
+				{
+					"name": "restaurantId",
+					"in": "path",
+					"required": true,
+					"description": "ID of Restaurant whose orders we want to find",
+					"type": "string"
+				}
+			],
+			"get": {
+				"tags": ["Orders"],
+				"summary": "Get orders of a Restaurant with id equl to restaurantId in system",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"definitions": {
+		"Order": {
+			"required": ["_id"],
+			"properties": {
+				"orderName": {
+					"type": "string"
+				},
+				"orderPrice": {
+					"type": "integer"
+				},
+				"restaurantId": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
